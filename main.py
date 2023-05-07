@@ -3,7 +3,7 @@ import requests
 from twilio.rest import Client
 import os
 api_key=(os.environ['API_KEY'])
-end_point=os.environ["END_POINT"]
+end_point="http://api.weatherapi.com/v1/forecast.json"
 account_sid=os.environ["ACCOUNT_SID"]
 auth_token=os.environ["AUTH_TOKEN"]
 [lat,lng]=address.get_loc()
@@ -26,8 +26,8 @@ else:
 client = Client(account_sid, auth_token)
 message = client.messages.create(
     body=f"Today's weather update\nMAX TEMPERATURE: {max_temp}\nMIN TEMPERATURE: {min_temp}\nAVERAGE TEMPERATURE: {avg_temp}\n{rain}",
-    from_="+13203226214",
-    to='+917007157057'
+    from_="Twilio Provided Number",
+    to='Add recivers Number'
 )
 
 print(message.status)
